@@ -2,6 +2,18 @@
 
 ## [Unreleased]
 
+### Changed
+
+- Update `pyo3` to `0.16`.
+
+### Fixed
+
+- Memory leak in `iter_errors`. [#325](https://github.com/Stranger6667/jsonschema-rs/issues/325)
+
+### Removed
+
+- Support for Python 3.6
+
 ## [0.14.0] - 2022-01-31
 
 ### Added
