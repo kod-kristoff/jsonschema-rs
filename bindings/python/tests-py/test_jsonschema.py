@@ -187,11 +187,9 @@ def test_iter_err_message(func):
     err_b = next(errs)
     assert err_b.message == 'null is not of type "integer"'
 
-    try:
+    with suppress(StopIteration):
         next(errs)
         pytest.fail("Validation error should happen")
-    except StopIteration:
-        pass
 
 
 @pytest.mark.parametrize(
@@ -205,11 +203,9 @@ def test_iter_err_empty(func):
     schema = {"properties": {"foo": {"type": "integer"}}}
     instance = {"foo": 1}
     errs = func(instance)
-    try:
+    with suppress(StopIteration):
         next(errs)
         pytest.fail("Validation error should happen")
-    except StopIteration:
-        pass
 
 
 class StrEnum(Enum):
