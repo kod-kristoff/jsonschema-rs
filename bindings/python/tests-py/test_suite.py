@@ -59,8 +59,7 @@ NOT_SUPPORTED_CASES = {
 
 def load_file(path):
     with open(path, mode="r", encoding="utf-8") as fd:
-        for block in json.load(fd):
-            yield block
+        yield from json.load(fd)
 
 
 def maybe_optional(draft, schema, instance, expected, description, filename):
