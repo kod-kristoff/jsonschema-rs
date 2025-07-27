@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## [0.31.0] - 2025-07-28
+
 ### Added
 
 - Added support for old and new style string enums in object keys.
@@ -669,7 +671,8 @@
 ## 0.1.0 - 2020-06-09
 - Initial public release
 
-[Unreleased]: https://github.com/Stranger6667/jsonschema/compare/python-v0.30.0...HEAD
+[Unreleased]: https://github.com/Stranger6667/jsonschema/compare/python-v0.31.0...HEAD
+[0.31.0]: https://github.com/Stranger6667/jsonschema/compare/python-v0.30.0...python-v0.31.0
 [0.30.0]: https://github.com/Stranger6667/jsonschema/compare/python-v0.29.1...python-v0.30.0
 [0.29.1]: https://github.com/Stranger6667/jsonschema/compare/python-v0.29.0...python-v0.29.1
 [0.29.0]: https://github.com/Stranger6667/jsonschema/compare/python-v0.28.3...python-v0.29.0
