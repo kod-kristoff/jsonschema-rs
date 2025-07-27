@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## [0.31.0] - 2025-07-28
+
 ### Added
 
 - **CLI**: flag `-d, --draft <4|6|7|2019|2020>` to enforce a specific JSON Schema draft.
@@ -927,7 +929,8 @@ Old names are retained for backward compatibility but will be removed in a futur
 
 - Initial public release
 
-[Unreleased]: https://github.com/Stranger6667/jsonschema/compare/rust-v0.30.0...HEAD
+[Unreleased]: https://github.com/Stranger6667/jsonschema/compare/rust-v0.31.0...HEAD
+[0.31.0]: https://github.com/Stranger6667/jsonschema/compare/rust-v0.30.0...rust-v0.31.0
 [0.30.0]: https://github.com/Stranger6667/jsonschema/compare/rust-v0.29.1...rust-v0.30.0
 [0.29.1]: https://github.com/Stranger6667/jsonschema/compare/rust-v0.29.0...rust-v0.29.1
 [0.29.0]: https://github.com/Stranger6667/jsonschema/compare/rust-v0.28.3...rust-v0.29.0
