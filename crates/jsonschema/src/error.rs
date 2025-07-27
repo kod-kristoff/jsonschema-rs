@@ -182,6 +182,7 @@ pub enum TypeKind {
 impl<'a> ValidationError<'a> {
     /// Returns a wrapper that masks instance values in error messages.
     /// Uses "value" as a default placeholder.
+    #[must_use]
     pub fn masked<'b>(&'b self) -> MaskedValidationError<'a, 'b, 'static> {
         self.masked_with("value")
     }
@@ -197,6 +198,7 @@ impl<'a> ValidationError<'a> {
         }
     }
     /// Converts the `ValidationError` into an owned version with `'static` lifetime.
+    #[must_use]
     pub fn to_owned(self) -> ValidationError<'static> {
         ValidationError {
             instance_path: self.instance_path,
@@ -244,7 +246,7 @@ impl<'a> ValidationError<'a> {
             kind: ValidationErrorKind::AnyOf {
                 context: context
                     .into_iter()
-                    .map(|errors| errors.into_iter().map(|error| error.to_owned()).collect())
+                    .map(|errors| errors.into_iter().map(ValidationError::to_owned).collect())
                     .collect(),
             },
             schema_path: location,
@@ -624,7 +626,7 @@ impl<'a> ValidationError<'a> {
             kind: ValidationErrorKind::OneOfNotValid {
                 context: context
                     .into_iter()
-                    .map(|errors| errors.into_iter().map(|error| error.to_owned()).collect())
+                    .map(|errors| errors.into_iter().map(ValidationError::to_owned).collect())
                     .collect(),
             },
             schema_path: location,
@@ -1191,7 +1193,7 @@ mod tests {
             &instance,
             JsonType::String,
         );
-        assert_eq!(err.to_string(), r#"42 is not of type "string""#)
+        assert_eq!(err.to_string(), r#"42 is not of type "string""#);
     }
 
     #[test]
@@ -1206,7 +1208,7 @@ mod tests {
             &instance,
             types,
         );
-        assert_eq!(err.to_string(), r#"42 is not of types "number", "string""#)
+        assert_eq!(err.to_string(), r#"42 is not of types "number", "string""#);
     }
 
     #[test_case(true, &json!({"foo": {"bar": 42}}), "/foo/bar")]

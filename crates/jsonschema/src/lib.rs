@@ -824,6 +824,7 @@ pub async fn async_validator_for(schema: &Value) -> Result<Validator, Validation
 /// ```
 ///
 /// See [`ValidationOptions`] for all available configuration options.
+#[must_use]
 pub fn options() -> ValidationOptions {
     Validator::options()
 }
@@ -886,6 +887,7 @@ pub fn options() -> ValidationOptions {
 ///
 /// See [`ValidationOptions`] for all available configuration options.
 #[cfg(feature = "resolve-async")]
+#[must_use]
 pub fn async_options() -> ValidationOptions<std::sync::Arc<dyn AsyncRetrieve>> {
     Validator::async_options()
 }
@@ -955,6 +957,7 @@ pub mod meta {
     /// # Panics
     ///
     /// This function panics if the meta-schema can't be detected.
+    #[must_use]
     pub fn is_valid(schema: &Value) -> bool {
         meta_validator_for(schema).is_valid(schema)
     }
@@ -1086,7 +1089,7 @@ pub mod meta {
 /// assert!(jsonschema::draft4::is_valid(&schema, &instance));
 /// ```
 pub mod draft4 {
-    use super::*;
+    use super::{Draft, ValidationError, ValidationOptions, Validator, Value};
 
     /// Create a new JSON Schema validator using Draft 4 specifications.
     ///
@@ -1241,7 +1244,7 @@ pub mod draft4 {
 /// assert!(jsonschema::draft6::is_valid(&schema, &instance));
 /// ```
 pub mod draft6 {
-    use super::*;
+    use super::{Draft, ValidationError, ValidationOptions, Validator, Value};
 
     /// Create a new JSON Schema validator using Draft 6 specifications.
     ///
@@ -1396,7 +1399,7 @@ pub mod draft6 {
 /// assert!(jsonschema::draft7::is_valid(&schema, &instance));
 /// ```
 pub mod draft7 {
-    use super::*;
+    use super::{Draft, ValidationError, ValidationOptions, Validator, Value};
 
     /// Create a new JSON Schema validator using Draft 7 specifications.
     ///
@@ -1551,7 +1554,7 @@ pub mod draft7 {
 /// assert!(jsonschema::draft201909::is_valid(&schema, &instance));
 /// ```
 pub mod draft201909 {
-    use super::*;
+    use super::{Draft, ValidationError, ValidationOptions, Validator, Value};
 
     /// Create a new JSON Schema validator using Draft 2019-09 specifications.
     ///
@@ -1708,7 +1711,7 @@ pub mod draft201909 {
 /// # }
 /// ```
 pub mod draft202012 {
-    use super::*;
+    use super::{Draft, ValidationError, ValidationOptions, Validator, Value};
 
     /// Create a new JSON Schema validator using Draft 2020-12 specifications.
     ///
@@ -1877,7 +1880,7 @@ pub(crate) mod tests_util {
             .should_validate_formats(true)
             .build(schema)
             .expect("Invalid schema");
-        is_not_valid_with(&validator, instance)
+        is_not_valid_with(&validator, instance);
     }
 
     #[track_caller]
@@ -1887,7 +1890,7 @@ pub(crate) mod tests_util {
             .with_draft(draft)
             .build(schema)
             .expect("Invalid schema");
-        is_not_valid_with(&validator, instance)
+        is_not_valid_with(&validator, instance);
     }
 
     pub(crate) fn expect_errors(schema: &Value, instance: &Value, errors: &[&str]) {
@@ -1898,7 +1901,7 @@ pub(crate) mod tests_util {
                 .map(|e| e.to_string())
                 .collect::<Vec<String>>(),
             errors
-        )
+        );
     }
 
     #[track_caller]
@@ -1935,7 +1938,7 @@ pub(crate) mod tests_util {
     #[track_caller]
     pub(crate) fn is_valid_with_draft(draft: crate::Draft, schema: &Value, instance: &Value) {
         let validator = crate::options().with_draft(draft).build(schema).unwrap();
-        is_valid_with(&validator, instance)
+        is_valid_with(&validator, instance);
     }
 
     #[track_caller]
@@ -1954,7 +1957,7 @@ pub(crate) mod tests_util {
     #[track_caller]
     pub(crate) fn assert_schema_location(schema: &Value, instance: &Value, expected: &str) {
         let error = validate(schema, instance);
-        assert_eq!(error.schema_path.as_str(), expected)
+        assert_eq!(error.schema_path.as_str(), expected);
     }
 
     #[track_caller]
@@ -1962,7 +1965,7 @@ pub(crate) mod tests_util {
         let validator = crate::validator_for(schema).unwrap();
         let errors = validator.iter_errors(instance);
         for (error, location) in errors.zip(expected) {
-            assert_eq!(error.schema_path.as_str(), *location)
+            assert_eq!(error.schema_path.as_str(), *location);
         }
     }
 }
@@ -2215,7 +2218,7 @@ mod tests {
     fn meta_schemas(draft: Draft) {
         // See GH-258
         for schema in [json!({"enum": [0, 0.0]}), json!({"enum": []})] {
-            assert!(crate::options().with_draft(draft).build(&schema).is_ok())
+            assert!(crate::options().with_draft(draft).build(&schema).is_ok());
         }
     }
 
@@ -2223,7 +2226,7 @@ mod tests {
     fn incomplete_escape_in_pattern() {
         // See GH-253
         let schema = json!({"pattern": "\\u"});
-        assert!(crate::validator_for(&schema).is_err())
+        assert!(crate::validator_for(&schema).is_err());
     }
 
     #[test]
