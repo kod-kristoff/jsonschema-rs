@@ -12,6 +12,10 @@
 
 - Improve the precision of `multipleOf` for float values.
 
+### Changed
+
+- Bump `fancy-regex` to `0.15`.
+
 ## [0.30.0] - 2025-04-16
 
 ### Added
