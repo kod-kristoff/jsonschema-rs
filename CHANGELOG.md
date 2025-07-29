@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## [0.32.0] - 2025-07-29
+
 ### Added
 
 - Added missing `context` field to `ValidationErrorKind::OneOfMultipleValid`.
@@ -937,7 +939,8 @@ Old names are retained for backward compatibility but will be removed in a futur
 
 - Initial public release
 
-[Unreleased]: https://github.com/Stranger6667/jsonschema/compare/rust-v0.31.0...HEAD
+[Unreleased]: https://github.com/Stranger6667/jsonschema/compare/rust-v0.32.0...HEAD
+[0.32.0]: https://github.com/Stranger6667/jsonschema/compare/rust-v0.31.0...rust-v0.32.0
 [0.31.0]: https://github.com/Stranger6667/jsonschema/compare/rust-v0.30.0...rust-v0.31.0
 [0.30.0]: https://github.com/Stranger6667/jsonschema/compare/rust-v0.29.1...rust-v0.30.0
 [0.29.1]: https://github.com/Stranger6667/jsonschema/compare/rust-v0.29.0...rust-v0.29.1
