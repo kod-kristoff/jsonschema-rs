@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+### Changed
+
+- Bump `fancy-regex` to `0.16`.
+
 ## [0.32.0] - 2025-07-29
 
 ### Added
