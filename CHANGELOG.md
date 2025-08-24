@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## [0.33.0] - 2025-08-24
+
 ### Fixed
 
 - **BREAKING**: `instance_path` segments are now unescaped when iterating. `LocationSegment::Property` now holds `Cow<'_, str>` and `LocationSegment` is no longer `Copy`. [#788](https://github.com/Stranger6667/jsonschema/issues/788)
@@ -949,7 +951,8 @@ Old names are retained for backward compatibility but will be removed in a futur
 
 - Initial public release
 
-[Unreleased]: https://github.com/Stranger6667/jsonschema/compare/rust-v0.32.1...HEAD
+[Unreleased]: https://github.com/Stranger6667/jsonschema/compare/rust-v0.33.0...HEAD
+[0.33.0]: https://github.com/Stranger6667/jsonschema/compare/rust-v0.32.1...rust-v0.33.0
 [0.32.1]: https://github.com/Stranger6667/jsonschema/compare/rust-v0.32.0...rust-v0.32.1
 [0.32.0]: https://github.com/Stranger6667/jsonschema/compare/rust-v0.31.0...rust-v0.32.0
 [0.31.0]: https://github.com/Stranger6667/jsonschema/compare/rust-v0.30.0...rust-v0.31.0
