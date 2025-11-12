@@ -9,22 +9,19 @@ authors.workspace = true
 repository.workspace = true
 license.workspace = true
 
-[dependencies]
-ahash.workspace = true
-fluent-uri = { version = "0.4.1", features = ["serde"] }
-parking_lot = "0.12.3"
-percent-encoding = "2.3.1"
-serde_json.workspace = true
-
-async-trait = { version = "0.1.86", optional = true }
-futures = { version = "0.3.31", optional = true }
-
 [features]
 default = []
 retrieve-async = ["dep:async-trait", "dep:futures"]
 
-[lints]
-workspace = true
+[dependencies]
+ahash.workspace = true
+
+async-trait = { version = "0.1.86", optional = true }
+fluent-uri = { version = "0.4.1", features = ["serde"] }
+futures = { version = "0.3.31", optional = true }
+parking_lot = "0.12.3"
+percent-encoding = "2.3.1"
+serde_json.workspace = true
 
 [dev-dependencies]
 benchmark = { path = "../benchmark/" }
@@ -33,6 +30,9 @@ criterion = { version = "0.7", default-features = false }
 referencing_testsuite = { package = "jsonschema-referencing-testsuite", path = "../jsonschema-referencing-testsuite/" }
 test-case = "3.3.1"
 tokio = { version = "1", features = ["macros", "rt"] }
+
+[lints]
+workspace = true
 
 [[bench]]
 harness = false
