@@ -4,6 +4,7 @@
 
 ### Changed
 
+- **BREAKING**: `BasicOutput` and `Annotations` no longer have lifetime parameters. Update type annotations from `BasicOutput<'a>` to `BasicOutput` and `Annotations<'a>` to `Annotations`.
 - `referencing`: URI caching now avoids hash collisions and reduces lock contention.
 - Update `fluent-uri` to `0.4.1`.
 - Bump MSRV to `1.83.0`.
@@ -27,7 +28,8 @@
 
 ### Removed
 
-- `Validator::config` to reduce the memory footprint.
+- **BREAKING**: `Validator::config` to reduce the memory footprint.
+- **BREAKING**: Public `DRAFT4_META_VALIDATOR`, `DRAFT6_META_VALIDATOR`, `DRAFT7_META_VALIDATOR`, `DRAFT201909_META_VALIDATOR`, and `DRAFT202012_META_VALIDATOR` statics. Use `draftX::meta::validator()` helper functions instead (e.g., `draft7::meta::validator()`).
 
 ## [0.33.0] - 2025-08-24
 

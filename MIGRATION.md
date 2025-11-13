@@ -2,17 +2,81 @@
 
 ## Upgrading from 0.33.x to 0.34.0
 
-Meta-schema helpers moved to `draftX::meta::validator()` so `MetaValidator` exposes the same handle on native and wasm targets. Dropping the `Send + Sync` bounds for retrievers means the old `LazyLock` statics can’t store validators on `wasm32` anymore, so the new helper borrows cached validators on native platforms and builds owned copies on WebAssembly.
+### Removed `Validator::config()`
+
+The `Validator::config()` method has been removed to reduce memory footprint. The validator no longer stores the configuration internally.
 
 ```rust
 // Old (0.33.x)
-let validator = jsonschema::draft7::meta::VALIDATOR;
-validator.is_valid(&schema);
+let validator = jsonschema::validator_for(&schema)?;
+let config = validator.config(); // Returns Arc<ValidationOptions>
+
+// New (0.34.x)
+// No replacement - the config is not stored after compilation
+// If you need config values, keep a reference to your ValidationOptions
+let options = jsonschema::options().with_draft(Draft::Draft7);
+let validator = options.build(&schema)?;
+// Keep `options` around if you need to access configuration later
+```
+
+### Meta-validator statics replaced with functions
+
+Public `DRAFT*_META_VALIDATOR` statics have been removed. Use the new `draftX::meta::validator()` helper functions instead. Dropping the `Send + Sync` bounds for retrievers means the old `LazyLock` statics can't store validators on `wasm32` anymore, so the new helper borrows cached validators on native platforms and builds owned copies on WebAssembly.
+
+```rust
+// Old (0.33.x)
+use jsonschema::DRAFT7_META_VALIDATOR;
+DRAFT7_META_VALIDATOR.is_valid(&schema);
+
+// Also removed:
+use jsonschema::DRAFT4_META_VALIDATOR;
+use jsonschema::DRAFT6_META_VALIDATOR;
+use jsonschema::DRAFT201909_META_VALIDATOR;
+use jsonschema::DRAFT202012_META_VALIDATOR;
 
 // New (0.34.x)
 let validator = jsonschema::draft7::meta::validator();
 validator.is_valid(&schema);
+
+// Or use the module-specific helper:
+jsonschema::draft7::meta::is_valid(&schema);
 ```
+
+### Lifetime parameters removed from output types
+
+`BasicOutput` and `Annotations` no longer have lifetime parameters. This simplifies the API and uses `Arc` for internal ownership.
+
+```rust
+// Old (0.33.x)
+fn process_output<'a>(output: BasicOutput<'a>) -> Result<(), Error> {
+    match output {
+        BasicOutput::Valid(units) => {
+            for unit in units {
+                let annotations: &Annotations<'a> = unit.annotations();
+                // ...
+            }
+        }
+        BasicOutput::Invalid(errors) => { /* ... */ }
+    }
+    Ok(())
+}
+
+// New (0.34.x)
+fn process_output(output: BasicOutput) -> Result<(), Error> {
+    match output {
+        BasicOutput::Valid(units) => {
+            for unit in units {
+                let annotations: &Annotations = unit.annotations();
+                // ...
+            }
+        }
+        BasicOutput::Invalid(errors) => { /* ... */ }
+    }
+    Ok(())
+}
+```
+
+### WASM: Relaxed `Send + Sync` bounds
 
 `Retrieve` / `AsyncRetrieve` on `wasm32` no longer require `Send + Sync`.
 
