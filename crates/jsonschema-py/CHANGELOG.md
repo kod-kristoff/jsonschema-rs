@@ -6,11 +6,15 @@
 
 - Update `pyo3` to `0.27`.
 
+### Fixed
+
+- Hostname and IDN hostname formats now decode `xn--` labels, reject leading combining marks/uppercase prefixes, and enforce the latest JSON Schema punycode context rules.
+
 ### Performance
 
-- Recursive and regular `$ref` compilation now reuses existing validator nodes, so memory stays flat during validation and redundant compilation passes are removed.
-- Validator compilation once again caches regex engines and also precomputes absolute schema pointers; regex-heavy schemas often compile faster, while pointer-heavy ones may take slightly longer because more work is done during compilation.
-- Significant performance improvement for compiling large schemas [#755](https://github.com/Stranger6667/jsonschema/issues/755).
+- Recursive and regular `$ref` compilation deduplicates validator nodes, which decreases the memory usage and improves performance.
+- Validator compilation restores the regex cache for faster builds on regex-heavy schemas and precomputes absolute schema locations, trading a bit of compile time for faster `apply` on location-heavy workloads.
+- Large schema compilation is significantly faster. [#755](https://github.com/Stranger6667/jsonschema/issues/755)
 
 ## [0.32.1] - 2025-08-24
 

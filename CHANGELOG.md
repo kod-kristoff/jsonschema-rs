@@ -6,8 +6,8 @@
 
 - Update `fluent-uri` to `0.4.1`.
 - Bump MSRV to `1.83.0`.
-- Remove the `Send + Sync` bounds from `Retrieve`/`AsyncRetrieve` on `wasm32`.
-- Introduce the `draftX::meta::validator()` helper so meta-schema validators lazily initialize on `wasm32` (owned handles) while native targets still borrow cached statics; use the shared `jsonschema::meta::MetaValidator` handle instead of `...::meta::VALIDATOR`.
+- Drop the `Send + Sync` bounds from `Retrieve`/`AsyncRetrieve` on `wasm32`.
+- Use the new `draftX::meta::validator()` helper so meta-schema validators lazy-init on `wasm32` while native targets keep borrowing the cached `jsonschema::meta::MetaValidator`.
 
 ### Fixed
 
@@ -16,10 +16,10 @@
 
 ### Performance
 
-- Reworked the `apply` pipeline to reuse cached schema locations, URI fragments, and preallocated buffers; validation-heavy workloads see up to ~2.5× throughput improvements.
-- Recursive and regular `$ref` compilation reuses validator nodes instead of re-emitting them, preventing memory growth during validation and cutting redundant compilation work.
-- Validator compilation now restores the regex cache and precomputes absolute schema pointers. Regex-heavy schemas often compile faster thanks to the cache, while pointer-heavy schemas may take slightly longer because more work happens upfront.
-- Significant performance improvement for compiling large schemas [#755](https://github.com/Stranger6667/jsonschema/issues/755).
+- `apply` now reuses cached schema locations, URI fragments, and buffers for up to ~2.5× faster validation.
+- Recursive and regular `$ref` compilation deduplicates validator nodes, which decreases the memory usage and improves performance.
+- Validator compilation restores the regex cache for faster builds on regex-heavy schemas and precomputes absolute schema locations, trading a bit of compile time for faster `apply` on location-heavy workloads.
+- Large schema compilation is significantly faster. [#755](https://github.com/Stranger6667/jsonschema/issues/755)
 
 ### Removed
 
