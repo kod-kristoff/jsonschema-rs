@@ -152,7 +152,7 @@ jobs:
         if: matrix.target == 'aarch64'
         name: Install built wheel on ARM architecture
         with:
-          base_image: '--platform=linux/aarch64 ubuntu:20.04'
+          base_image: '--platform=linux/aarch64 ubuntu:22.04'
           githubToken: ${{ github.token }}
           install: |
             export TZ=UTC
