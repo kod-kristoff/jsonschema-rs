@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## [0.34.0] - 2025-11-14
+
 ### Added
 
 - Python 3.14 support.
@@ -714,7 +716,8 @@
 ## 0.1.0 - 2020-06-09
 - Initial public release
 
-[Unreleased]: https://github.com/Stranger6667/jsonschema/compare/python-v0.33.0...HEAD
+[Unreleased]: https://github.com/Stranger6667/jsonschema/compare/python-v0.34.0...HEAD
+[0.34.0]: https://github.com/Stranger6667/jsonschema/compare/python-v0.33.0...python-v0.34.0
 [0.33.0]: https://github.com/Stranger6667/jsonschema/compare/python-v0.32.1...python-v0.33.0
 [0.32.1]: https://github.com/Stranger6667/jsonschema/compare/python-v0.32.0...python-v0.32.1
 [0.32.0]: https://github.com/Stranger6667/jsonschema/compare/python-v0.31.0...python-v0.32.0

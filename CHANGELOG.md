@@ -20,7 +20,7 @@
 
 ### Performance
 
-- `apply` now reuses cached schema locations, URI fragments, and buffers for up to ~2.5× faster validation.
+- `apply` now reuses cached schema locations, URI fragments, and buffers for up to ~2.5x faster validation.
 - Recursive and regular `$ref` compilation deduplicates validator nodes, which decreases the memory usage and improves performance.
 - Validator compilation restores the regex cache for faster builds on regex-heavy schemas and precomputes absolute schema locations, trading a bit of compile time for faster `apply` on location-heavy workloads.
 - Large schema compilation is significantly faster. [#755](https://github.com/Stranger6667/jsonschema/issues/755)
