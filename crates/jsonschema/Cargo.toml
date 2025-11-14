@@ -1,6 +1,6 @@
 [package]
 name = "jsonschema"
-version = "0.33.0"
+version = "0.34.0"
 description = "JSON schema validaton library"
 keywords = ["jsonschema", "validation"]
 categories = ["web-programming"]
@@ -49,7 +49,7 @@ itoa = "1"
 num-cmp = "0.1"
 num-traits = "0.2.19"
 percent-encoding = "2.3"
-referencing = { version = "0.33.0", path = "../jsonschema-referencing" }
+referencing = { version = "0.34.0", path = "../jsonschema-referencing" }
 regex = "1.11.1"
 regex-syntax = "0.8.5"
 serde.workspace = true

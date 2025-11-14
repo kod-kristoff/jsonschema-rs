@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## [0.34.0] - 2025-11-14
+
 ### Changed
 
 - **BREAKING**: `BasicOutput` and `Annotations` no longer have lifetime parameters. Update type annotations from `BasicOutput<'a>` to `BasicOutput` and `Annotations<'a>` to `Annotations`.
@@ -981,6 +983,7 @@ Old names are retained for backward compatibility but will be removed in a futur
 - Initial public release
 
 [Unreleased]: https://github.com/Stranger6667/jsonschema/compare/rust-v0.33.0...HEAD
+[0.34.0]: https://github.com/Stranger6667/jsonschema/compare/rust-v0.33.0...rust-v0.34.0
 [0.33.0]: https://github.com/Stranger6667/jsonschema/compare/rust-v0.32.1...rust-v0.33.0
 [0.32.1]: https://github.com/Stranger6667/jsonschema/compare/rust-v0.32.0...rust-v0.32.1
 [0.32.0]: https://github.com/Stranger6667/jsonschema/compare/rust-v0.31.0...rust-v0.32.0
