@@ -1,5 +1,4 @@
 import json
-import sys
 from contextlib import suppress
 from pathlib import Path
 
@@ -7,10 +6,7 @@ import fastjsonschema
 import jsonschema
 import pytest
 
-if sys.implementation.name != "pypy":
-    import jsonschema_rs
-else:
-    jsonschema_rs = None
+import jsonschema_rs
 
 
 BENCHMARK_DATA = Path(__file__).parent.parent.parent / "benchmark/data"
