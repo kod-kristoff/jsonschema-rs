@@ -2,13 +2,15 @@
 
 ## [Unreleased]
 
+## [0.35.0] - 2025-11-16
+
 ### Added
 
 - Support for custom meta-schemas. Schemas with custom `$schema` URIs can now be used by registering their meta-schemas via the `registry` parameter in `validator_for()`. [#664](https://github.com/Stranger6667/jsonschema/issues/664)
 - `registry` parameter to `meta.is_valid()` and `meta.validate()` for validating schemas against custom meta-schemas.
 - Type stubs for the `meta` module.
 - PyPy 3.11 support. [#309](https://github.com/Stranger6667/jsonschema/issues/309)
-- Support for arbitrarily large integers. [#103](https://github.com/Stranger6667/jsonschema/issues/103)
+- Support for arbitrary-precision numbers, including large integers and high-precision decimals that exceed standard floating-point limits. [#103](https://github.com/Stranger6667/jsonschema/issues/103)
 - Support for HTTPS `$schema` URIs for drafts 04, 06, and 07 (e.g., `https://json-schema.org/draft-07/schema`). [#802](https://github.com/Stranger6667/jsonschema/issues/802)
 
 ### Changed
@@ -30,6 +32,7 @@
 ### Added
 
 - Python 3.14 support.
+
 ### Changed
 
 - Update `pyo3` to `0.27`.
@@ -47,7 +50,7 @@
 - `unevaluatedProperties` memory usage drastically reduced by eliminating redundant registry clones during compilation.
 - `unevaluatedItems` validation is ~10% faster through early-exit optimizations and eliminating redundant validations in combinators.
 
-## [0.32.1] - 2025-08-24
+## [0.33.0] - 2025-08-24
 
 ### Fixed
 
@@ -738,7 +741,8 @@
 ## 0.1.0 - 2020-06-09
 - Initial public release
 
-[Unreleased]: https://github.com/Stranger6667/jsonschema/compare/python-v0.34.0...HEAD
+[Unreleased]: https://github.com/Stranger6667/jsonschema/compare/python-v0.35.0...HEAD
+[0.35.0]: https://github.com/Stranger6667/jsonschema/compare/python-v0.34.0...python-v0.35.0
 [0.34.0]: https://github.com/Stranger6667/jsonschema/compare/python-v0.33.0...python-v0.34.0
 [0.33.0]: https://github.com/Stranger6667/jsonschema/compare/python-v0.32.1...python-v0.33.0
 [0.32.1]: https://github.com/Stranger6667/jsonschema/compare/python-v0.32.0...python-v0.32.1
