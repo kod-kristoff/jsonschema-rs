@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## [0.35.0] - 2025-11-16
+
 ### Added
 
 - Support for custom meta-schemas. Schemas with custom `$schema` URIs can now be used by registering their meta-schemas in the `Registry` via `jsonschema::options().with_registry()`. [#664](https://github.com/Stranger6667/jsonschema/issues/664)
@@ -10,7 +12,7 @@
 
 ### Changed
 
-- **BREAKING**: `meta::is_valid` and `meta::validate` now return errors for unknown `$schema` values instead of defaulting to Draft 2020-12. Use `meta::options().with_registry()` to validate schemas against custom meta-schemas.
+- **BREAKING**: `meta::is_valid` now panics for unknown `$schema` values instead of defaulting to Draft 2020-12. `meta::validate` returns an error for unknown `$schema` values. Use `meta::options().with_registry()` to validate schemas against custom meta-schemas.
 - **BREAKING**: `Resource::from_contents` no longer returns `Result` and always succeeds, since draft detection no longer fails for unknown `$schema` values.
 
 ### Removed
@@ -23,6 +25,7 @@
 - `required`: short-circuit when the instance object has fewer properties than required keys.
 
 ## [0.34.0] - 2025-11-14
+
 ### Changed
 
 - **BREAKING**: `BasicOutput` and `Annotations` no longer have lifetime parameters. Update type annotations from `BasicOutput<'a>` to `BasicOutput` and `Annotations<'a>` to `Annotations`.
@@ -1001,7 +1004,8 @@ Old names are retained for backward compatibility but will be removed in a futur
 
 - Initial public release
 
-[Unreleased]: https://github.com/Stranger6667/jsonschema/compare/rust-v0.33.0...HEAD
+[Unreleased]: https://github.com/Stranger6667/jsonschema/compare/rust-v0.35.0...HEAD
+[0.35.0]: https://github.com/Stranger6667/jsonschema/compare/rust-v0.34.0...rust-v0.35.0
 [0.34.0]: https://github.com/Stranger6667/jsonschema/compare/rust-v0.33.0...rust-v0.34.0
 [0.33.0]: https://github.com/Stranger6667/jsonschema/compare/rust-v0.32.1...rust-v0.33.0
 [0.32.1]: https://github.com/Stranger6667/jsonschema/compare/rust-v0.32.0...rust-v0.32.1

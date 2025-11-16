@@ -37,18 +37,30 @@ let validator = jsonschema::options()
 
 **Draft Resolution:** Custom meta-schemas inherit draft-specific behavior from their underlying draft. For example, a custom meta-schema based on Draft 7 will preserve Draft 7 semantics (ignoring `$ref` siblings, validating formats by default). The validator walks the meta-schema chain to determine the appropriate draft. To override this behavior, use `.with_draft()` to explicitly set a draft version.
 
-**Note:** `meta::is_valid` / `meta::validate` now behave strictly: they only succeed for schemas whose `$schema` resolves to one of the bundled meta-schemas. Unknown `$schema` values trigger the same error/panic you get during validator compilation. To meta-validate against custom specs, build a registry that contains those meta-schemas and call `jsonschema::meta::options().with_registry(registry)` before invoking `is_valid` / `validate` through the options builder.
-
 ### Removed `meta::try_is_valid` and `meta::try_validate`
 
-The `try_*` variants have been removed. Use the non-`try_` versions which treat unknown `$schema` values as Draft 2020-12.
+The `try_*` variants have been removed. The behavior has changed:
+
+- **Old (0.34.x)**: `try_is_valid` and `try_validate` returned `Result<_, ReferencingError>` for unknown `$schema` values
+- **New (0.35.x)**: `is_valid` **panics** for unknown `$schema` values, `validate` **returns `ValidationError`**
 
 ```rust
 // Old (0.34.x)
-let result = jsonschema::meta::try_is_valid(&schema)?;
+match jsonschema::meta::try_is_valid(&schema) {
+    Ok(is_valid) => println!("Valid: {}", is_valid),
+    Err(e) => println!("Unknown schema: {}", e),
+}
 
-// New (0.35.x)
-let result = jsonschema::meta::is_valid(&schema); // Returns bool
+// New (0.35.x) - For known drafts only
+let result = jsonschema::meta::is_valid(&schema); // Returns bool, panics on unknown $schema
+
+// New (0.35.x) - For custom meta-schemas
+let registry = Registry::try_from_resources([
+    ("http://example.com/custom", Resource::from_contents(meta_schema))
+])?;
+let result = jsonschema::meta::options()
+    .with_registry(registry)
+    .is_valid(&schema); // Returns bool
 ```
 
 ### `Resource::from_contents` no longer returns `Result`
