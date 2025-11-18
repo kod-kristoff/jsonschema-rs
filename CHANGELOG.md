@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## [0.36.0] - 2025-11-18
+
 ### Added
 
 - **CLI**: Structured `--output flag|list|hierarchical` modes now stream newline-delimited JSON records with schema/instance metadata plus JSON Schema Output v1 payloads (default `text` output remains human-readable).
@@ -1017,7 +1019,8 @@ Old names are retained for backward compatibility but will be removed in a futur
 
 - Initial public release
 
-[Unreleased]: https://github.com/Stranger6667/jsonschema/compare/rust-v0.35.0...HEAD
+[Unreleased]: https://github.com/Stranger6667/jsonschema/compare/rust-v0.36.0...HEAD
+[0.36.0]: https://github.com/Stranger6667/jsonschema/compare/rust-v0.35.0...rust-v0.36.0
 [0.35.0]: https://github.com/Stranger6667/jsonschema/compare/rust-v0.34.0...rust-v0.35.0
 [0.34.0]: https://github.com/Stranger6667/jsonschema/compare/rust-v0.33.0...rust-v0.34.0
 [0.33.0]: https://github.com/Stranger6667/jsonschema/compare/rust-v0.32.1...rust-v0.33.0
