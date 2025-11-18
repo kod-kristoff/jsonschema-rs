@@ -11,11 +11,23 @@ A fast command-line tool for JSON Schema validation, powered by the `jsonschema`
 
 Download the latest binary for your platform from the [releases page](https://github.com/Stranger6667/jsonschema-rs/releases):
 
-- **Linux (x86_64)**: `jsonschema-cli-x86_64-unknown-linux-gnu.tar.gz`
-- **Linux (ARM64)**: `jsonschema-cli-aarch64-unknown-linux-gnu.tar.gz`
-- **macOS (Intel)**: `jsonschema-cli-x86_64-apple-darwin.tar.gz`
-- **macOS (Apple Silicon)**: `jsonschema-cli-aarch64-apple-darwin.tar.gz`
-- **Windows**: `jsonschema-cli-x86_64-pc-windows-msvc.zip`
+**Linux (x86_64):**
+- `jsonschema-cli-x86_64-unknown-linux-gnu.tar.gz` - Standard GNU libc
+- `jsonschema-cli-x86_64-unknown-linux-musl.tar.gz` - Static binary (MUSL), no dependencies
+
+**Linux (ARM64):**
+- `jsonschema-cli-aarch64-unknown-linux-gnu.tar.gz` - Standard GNU libc
+- `jsonschema-cli-aarch64-unknown-linux-musl.tar.gz` - Static binary (MUSL), no dependencies
+
+**macOS:**
+- `jsonschema-cli-x86_64-apple-darwin.tar.gz` - Intel
+- `jsonschema-cli-aarch64-apple-darwin.tar.gz` - Apple Silicon
+
+**Windows:**
+- `jsonschema-cli-x86_64-pc-windows-msvc.zip` - MSVC runtime
+- `jsonschema-cli-x86_64-pc-windows-gnu.zip` - MinGW, no Visual Studio required
+
+> **Note:** MUSL variants are statically linked and work across all Linux distributions, including Alpine.
 
 Example installation on Linux/macOS:
 ```bash
