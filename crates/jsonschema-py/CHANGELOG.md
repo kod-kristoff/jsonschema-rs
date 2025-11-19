@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## [0.37.0] - 2025-11-19
+
 ### Added
 
 - Support for `decimal.Decimal` type in both schemas and instances. [#319](https://github.com/Stranger6667/jsonschema/issues/319)
@@ -9,8 +11,8 @@
 
 ### Performance
 
-- `jsonschema_rs.validate()` and `Validator.validate()` run 5–10% faster in some workloads thanks to slimmer `ValidationError` objects.
-- `evaluate()`: Avoids copying annotation values on every schema node evaluation. Can be multiple times faster for schemas with large annotations like extensive `title`, `description`, or `examples` fields.
+- `jsonschema_rs.validate()` and `Validator.validate()` run 5–10% faster in some workloads.
+- `evaluate()`: Avoiding deep clones of unmatched keyword values (e.g., `title`, `description`, `examples`) on every schema node evaluation. Can be multiple times faster for schemas with large annotations. 
 
 ## [0.36.0] - 2025-11-18
 
@@ -767,7 +769,8 @@
 ## 0.1.0 - 2020-06-09
 - Initial public release
 
-[Unreleased]: https://github.com/Stranger6667/jsonschema/compare/python-v0.36.0...HEAD
+[Unreleased]: https://github.com/Stranger6667/jsonschema/compare/python-v0.37.0...HEAD
+[0.37.0]: https://github.com/Stranger6667/jsonschema/compare/python-v0.36.0...python-v0.37.0
 [0.36.0]: https://github.com/Stranger6667/jsonschema/compare/python-v0.35.0...python-v0.36.0
 [0.35.0]: https://github.com/Stranger6667/jsonschema/compare/python-v0.34.0...python-v0.35.0
 [0.34.0]: https://github.com/Stranger6667/jsonschema/compare/python-v0.33.0...python-v0.34.0
