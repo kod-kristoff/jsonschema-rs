@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## [0.37.1] - 2025-11-19
+
 ### Fixed
 
 - Stack overflow on empty `$ref` value. [#886](https://github.com/Stranger6667/jsonschema/issues/886)
@@ -773,7 +775,8 @@
 ## 0.1.0 - 2020-06-09
 - Initial public release
 
-[Unreleased]: https://github.com/Stranger6667/jsonschema/compare/python-v0.37.0...HEAD
+[Unreleased]: https://github.com/Stranger6667/jsonschema/compare/python-v0.37.1...HEAD
+[0.37.1]: https://github.com/Stranger6667/jsonschema/compare/python-v0.37.0...python-v0.37.1
 [0.37.0]: https://github.com/Stranger6667/jsonschema/compare/python-v0.36.0...python-v0.37.0
 [0.36.0]: https://github.com/Stranger6667/jsonschema/compare/python-v0.35.0...python-v0.36.0
 [0.35.0]: https://github.com/Stranger6667/jsonschema/compare/python-v0.34.0...python-v0.35.0
