@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## [0.37.0] - 2025-11-19
+
 ### Added
 
 - `evaluate()` top-level function for convenient access to structured validation output.
@@ -1036,7 +1038,8 @@ Old names are retained for backward compatibility but will be removed in a futur
 
 - Initial public release
 
-[Unreleased]: https://github.com/Stranger6667/jsonschema/compare/rust-v0.36.0...HEAD
+[Unreleased]: https://github.com/Stranger6667/jsonschema/compare/rust-v0.37.0...HEAD
+[0.37.0]: https://github.com/Stranger6667/jsonschema/compare/rust-v0.36.0...rust-v0.37.0
 [0.36.0]: https://github.com/Stranger6667/jsonschema/compare/rust-v0.35.0...rust-v0.36.0
 [0.35.0]: https://github.com/Stranger6667/jsonschema/compare/rust-v0.34.0...rust-v0.35.0
 [0.34.0]: https://github.com/Stranger6667/jsonschema/compare/rust-v0.33.0...rust-v0.34.0
