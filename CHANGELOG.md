@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## [0.37.2] - 2025-11-27
+
 ### Added
 
 - `JsonTypeSet::len()` and `JsonTypeSet::remove()` helpers for managing type sets.
@@ -1052,7 +1054,8 @@ Old names are retained for backward compatibility but will be removed in a futur
 
 - Initial public release
 
-[Unreleased]: https://github.com/Stranger6667/jsonschema/compare/rust-v0.37.1...HEAD
+[Unreleased]: https://github.com/Stranger6667/jsonschema/compare/rust-v0.37.2...HEAD
+[0.37.2]: https://github.com/Stranger6667/jsonschema/compare/rust-v0.37.1...rust-v0.37.2
 [0.37.1]: https://github.com/Stranger6667/jsonschema/compare/rust-v0.37.0...rust-v0.37.1
 [0.37.0]: https://github.com/Stranger6667/jsonschema/compare/rust-v0.36.0...rust-v0.37.0
 [0.36.0]: https://github.com/Stranger6667/jsonschema/compare/rust-v0.35.0...rust-v0.36.0
