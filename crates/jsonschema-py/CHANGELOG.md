@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## [0.37.3] - 2025-11-28
+
 ### Fixed
 
 - External resources not discovered within subresources of local `$ref` targets. [#892](https://github.com/Stranger6667/jsonschema/issues/892)
@@ -785,7 +787,8 @@
 ## 0.1.0 - 2020-06-09
 - Initial public release
 
-[Unreleased]: https://github.com/Stranger6667/jsonschema/compare/python-v0.37.2...HEAD
+[Unreleased]: https://github.com/Stranger6667/jsonschema/compare/python-v0.37.3...HEAD
+[0.37.3]: https://github.com/Stranger6667/jsonschema/compare/python-v0.37.2...python-v0.37.3
 [0.37.2]: https://github.com/Stranger6667/jsonschema/compare/python-v0.37.1...python-v0.37.2
 [0.37.1]: https://github.com/Stranger6667/jsonschema/compare/python-v0.37.0...python-v0.37.1
 [0.37.0]: https://github.com/Stranger6667/jsonschema/compare/python-v0.36.0...python-v0.37.0
