@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## [0.38.0] - 2025-12-24
+
 ### Added
 
 - `EmailOptions` for configuring `email` format validation. [#903](https://github.com/Stranger6667/jsonschema/pull/903)
@@ -1081,7 +1083,8 @@ Old names are retained for backward compatibility but will be removed in a futur
 
 - Initial public release
 
-[Unreleased]: https://github.com/Stranger6667/jsonschema/compare/rust-v0.37.4...HEAD
+[Unreleased]: https://github.com/Stranger6667/jsonschema/compare/rust-v0.38.0...HEAD
+[0.38.0]: https://github.com/Stranger6667/jsonschema/compare/rust-v0.37.4...rust-v0.38.0
 [0.37.4]: https://github.com/Stranger6667/jsonschema/compare/rust-v0.37.3...rust-v0.37.4
 [0.37.3]: https://github.com/Stranger6667/jsonschema/compare/rust-v0.37.2...rust-v0.37.3
 [0.37.2]: https://github.com/Stranger6667/jsonschema/compare/rust-v0.37.1...rust-v0.37.2
