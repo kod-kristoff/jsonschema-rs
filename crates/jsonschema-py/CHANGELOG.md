@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## [0.38.1] - 2025-12-25
+
 ### Fixed
 
 - `multipleOf` validation for integer values between `2^53` and `i64::MAX`.
@@ -813,7 +815,8 @@
 ## 0.1.0 - 2020-06-09
 - Initial public release
 
-[Unreleased]: https://github.com/Stranger6667/jsonschema/compare/python-v0.38.0...HEAD
+[Unreleased]: https://github.com/Stranger6667/jsonschema/compare/python-v0.38.1...HEAD
+[0.38.1]: https://github.com/Stranger6667/jsonschema/compare/python-v0.38.0...python-v0.38.1
 [0.38.0]: https://github.com/Stranger6667/jsonschema/compare/python-v0.37.4...python-v0.38.0
 [0.37.4]: https://github.com/Stranger6667/jsonschema/compare/python-v0.37.3...python-v0.37.4
 [0.37.3]: https://github.com/Stranger6667/jsonschema/compare/python-v0.37.2...python-v0.37.3
