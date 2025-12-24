@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## [0.38.1] - 2025-12-25
+
 ### Fixed
 
 - `multipleOf` validation for integer values between `2^53` and `i64::MAX` with `arbitrary-precision` feature.
@@ -1087,7 +1089,8 @@ Old names are retained for backward compatibility but will be removed in a futur
 
 - Initial public release
 
-[Unreleased]: https://github.com/Stranger6667/jsonschema/compare/rust-v0.38.0...HEAD
+[Unreleased]: https://github.com/Stranger6667/jsonschema/compare/rust-v0.38.1...HEAD
+[0.38.1]: https://github.com/Stranger6667/jsonschema/compare/rust-v0.38.0...rust-v0.38.1
 [0.38.0]: https://github.com/Stranger6667/jsonschema/compare/rust-v0.37.4...rust-v0.38.0
 [0.37.4]: https://github.com/Stranger6667/jsonschema/compare/rust-v0.37.3...rust-v0.37.4
 [0.37.3]: https://github.com/Stranger6667/jsonschema/compare/rust-v0.37.2...rust-v0.37.3
