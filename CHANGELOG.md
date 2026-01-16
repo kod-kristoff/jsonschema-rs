@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## [0.39.0] - 2026-01-16
+
 ### Added
 
 - `ValidationError::evaluation_path()` for the dynamic path including `$ref` traversals.
@@ -1106,7 +1108,8 @@ Old names are retained for backward compatibility but will be removed in a futur
 
 - Initial public release
 
-[Unreleased]: https://github.com/Stranger6667/jsonschema/compare/rust-v0.38.1...HEAD
+[Unreleased]: https://github.com/Stranger6667/jsonschema/compare/rust-v0.39.0...HEAD
+[0.39.0]: https://github.com/Stranger6667/jsonschema/compare/rust-v0.38.1...rust-v0.39.0
 [0.38.1]: https://github.com/Stranger6667/jsonschema/compare/rust-v0.38.0...rust-v0.38.1
 [0.38.0]: https://github.com/Stranger6667/jsonschema/compare/rust-v0.37.4...rust-v0.38.0
 [0.37.4]: https://github.com/Stranger6667/jsonschema/compare/rust-v0.37.3...rust-v0.37.4
