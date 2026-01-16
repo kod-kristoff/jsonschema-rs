@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## [0.39.0] - 2026-01-16
+
 ### Added
 
 - `ValidationError.evaluation_path` attribute for the dynamic path including `$ref` traversals.
@@ -828,7 +830,8 @@
 ## 0.1.0 - 2020-06-09
 - Initial public release
 
-[Unreleased]: https://github.com/Stranger6667/jsonschema/compare/python-v0.38.1...HEAD
+[Unreleased]: https://github.com/Stranger6667/jsonschema/compare/python-v0.39.0...HEAD
+[0.39.0]: https://github.com/Stranger6667/jsonschema/compare/python-v0.38.1...python-v0.39.0
 [0.38.1]: https://github.com/Stranger6667/jsonschema/compare/python-v0.38.0...python-v0.38.1
 [0.38.0]: https://github.com/Stranger6667/jsonschema/compare/python-v0.37.4...python-v0.38.0
 [0.37.4]: https://github.com/Stranger6667/jsonschema/compare/python-v0.37.3...python-v0.37.4
