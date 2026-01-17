@@ -7,7 +7,7 @@ A benchmarking suite for comparing different Rust JSON Schema implementations.
 - `jsonschema` (latest version in this repo)
 - [valico](https://crates.io/crates/valico) (v4.0.0)
 - [jsonschema-valid](https://crates.io/crates/jsonschema-valid) (v0.5.2)
-- [boon](https://crates.io/crates/boon) (v0.6.0)
+- [boon](https://crates.io/crates/boon) (v0.6.1)
 
 ## Usage
 
@@ -27,6 +27,7 @@ $ cargo bench
 | CITM     | Concert data catalog with inferred schema      | 2.3 KB      | 501 KB        |
 | Fast     | From fastjsonschema benchmarks (valid/invalid) | 595 B       | 55 B / 60 B   |
 | FHIR     | Patient example validated against FHIR schema  | 3.3 MB      | 2.1 KB        |
+| Recursive| Nested data with `$dynamicRef`                 | 1.4 KB      | 449 B         |
 
 Sources:
 - OpenAPI: [Zuora](https://github.com/APIs-guru/openapi-directory/blob/1afd351ddf50e050acdb52937a819ef1927f417a/APIs/zuora.com/2021-04-23/openapi.yaml), [Schema](https://spec.openapis.org/oas/3.0/schema/2021-09-28)
@@ -42,21 +43,24 @@ Sources:
 
 | Benchmark     | jsonschema_valid | valico        | boon          | jsonschema (validate) |
 |---------------|------------------|---------------|---------------|------------------------|
-| OpenAPI       | -                | -             | 6.7333 ms (**x3.58**) | 1.8807 ms            |
-| Swagger       | -                | 105.07 ms (**x49.51**)   | 9.6542 ms (**x4.55**)     | 2.1220 ms            |
-| GeoJSON       | 15.718 ms (**x20.29**)      | 273.29 ms (**x352.93**)   | 16.785 ms (**x21.67**)  | 774.53 µs            |
-| CITM Catalog  | 2.4505 ms (**x2.24**)        | 25.139 ms (**x23.00**)    | 981.26 µs (**x0.90**)     | 1.0928 ms            |
-| Fast (Valid)  | 990.10 ns (**x5.16**)       | 3.1914 µs (**x16.64**)     | 298.32 ns (**x1.56**)   | 191.79 ns            |
-| Fast (Invalid)| 233.43 ns (**x0.85**)      | 3.2628 µs (**x11.87**)     | 422.37 ns (**x1.54**)   | 274.98 ns            |
-| FHIR          | 578.97 ms (**x152930.85**)        | 1.5964 ms (**x421.62**)    | 173.39 µs (**x45.80**)     | 3.7863 µs            |
+| OpenAPI       | -                | -             | 7.05 ms (**x3.41**) | 2.07 ms            |
+| Swagger       | -                | 110.63 ms (**x59.09**)   | 10.27 ms (**x5.48**)     | 1.87 ms            |
+| GeoJSON       | 16.44 ms (**x19.22**)      | 323.62 ms (**x378.33**)   | 19.08 ms (**x22.31**)  | 855.39 µs            |
+| CITM Catalog  | 2.45 ms (**x6.12**)        | 28.33 ms (**x70.67**)    | 1.06 ms (**x2.65**)     | 400.89 µs            |
+| Fast (Valid)  | 928.88 ns (**x10.90**)       | 3.34 µs (**x39.23**)     | 327.17 ns (**x3.84**)   | 85.25 ns            |
+| Fast (Invalid)| 209.16 ns (**x6.41**)      | 3.42 µs (**x104.69**)     | 394.97 ns (**x12.11**)   | 32.62 ns            |
+| FHIR          | 590.04 ms (**x162486.78**)        | 1.68 ms (**x463.33**)    | 179.24 µs (**x49.35**)     | 3.63 µs            |
+| Recursive     | -        | -    | 28.48 ms (**x3137.28**)     | 9.08 µs            |
 
 Notes:
 
 1. `jsonschema_valid` and `valico` do not handle valid path instances matching the `^\\/` regex.
 
-2. `jsonschema_valid` fails to resolve local references (e.g. `#/definitions/definitions`).
+2. `jsonschema_valid` fails to resolve local references (e.g. `#/definitions/definitions`) in OpenAPI/Swagger schemas.
 
-You can find benchmark code in [benches/](benches/), Rust version is `1.91.1`.
+3. `jsonschema_valid` and `valico` fail to resolve local references in the Recursive schema.
+
+You can find benchmark code in [benches/](benches/) and in the main `jsonschema` crate. Rust version is `1.92`.
 
 ## Contributing
 

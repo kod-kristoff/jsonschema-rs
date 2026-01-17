@@ -604,8 +604,8 @@ On instance["api_key"]:
 
 `jsonschema-rs` is designed for high performance, outperforming other Python JSON Schema validators in most scenarios:
 
-- Up to **60-390x** faster than `jsonschema` for complex schemas and large instances
-- Generally **3-7x** faster than `fastjsonschema` on CPython
+- **45-200x** faster than `jsonschema` for complex schemas and large instances
+- **2-5x** faster than `fastjsonschema` on CPython
 
 For detailed benchmarks, see our [full performance comparison](https://github.com/Stranger6667/jsonschema/blob/master/crates/jsonschema-py/BENCHMARKS.md).
 
