@@ -25,9 +25,8 @@ impl std::fmt::Display for HttpRetrieverError {
             Self::CertificateRead { path, source } => {
                 write!(
                     f,
-                    "Failed to read certificate file '{}': {}",
-                    path.display(),
-                    source
+                    "Failed to read certificate file '{}': {source}",
+                    path.display()
                 )
             }
             Self::ClientBuild(e) => write!(f, "Failed to build HTTP client: {e}"),
