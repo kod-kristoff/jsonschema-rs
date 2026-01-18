@@ -48,8 +48,7 @@ for annotation in evaluation.annotations():
 
 - 📚 Full support for popular JSON Schema drafts
 - 🌐 Remote reference fetching (network/file)
-- 🔧 Custom format validators
-- 🔑 Custom keyword validators
+- 🔧 Custom keywords and format validators
 - ✨ Meta-schema validation for schema documents
 
 ### Supported drafts
