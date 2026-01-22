@@ -642,7 +642,7 @@ For detailed benchmarks, see our [full performance comparison](https://github.co
 
 ## Python support
 
-`jsonschema-rs` supports CPython 3.8 through 3.14.
+`jsonschema-rs` supports CPython 3.10 through 3.14 and PyPy 3.10+.
 
 ## Acknowledgements
 
