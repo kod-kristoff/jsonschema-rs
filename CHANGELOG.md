@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## [0.40.1] - 2026-01-30
+
 ### Changed
 
 - `ValidationErrorKind::Custom` now includes a `keyword` field containing the custom keyword name.
@@ -1124,7 +1126,8 @@ Old names are retained for backward compatibility but will be removed in a futur
 
 - Initial public release
 
-[Unreleased]: https://github.com/Stranger6667/jsonschema/compare/rust-v0.40.0...HEAD
+[Unreleased]: https://github.com/Stranger6667/jsonschema/compare/rust-v0.40.1...HEAD
+[0.40.1]: https://github.com/Stranger6667/jsonschema/compare/rust-v0.40.0...rust-v0.40.1
 [0.40.0]: https://github.com/Stranger6667/jsonschema/compare/rust-v0.39.0...rust-v0.40.0
 [0.39.0]: https://github.com/Stranger6667/jsonschema/compare/rust-v0.38.1...rust-v0.39.0
 [0.38.1]: https://github.com/Stranger6667/jsonschema/compare/rust-v0.38.0...rust-v0.38.1
