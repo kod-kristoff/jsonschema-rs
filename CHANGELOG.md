@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## [0.40.2] - 2026-01-30
+
 ### Changed
 
 - Exclude internal `tracker` field from `ValidationError` Debug output.
@@ -1135,7 +1137,8 @@ Old names are retained for backward compatibility but will be removed in a futur
 
 - Initial public release
 
-[Unreleased]: https://github.com/Stranger6667/jsonschema/compare/rust-v0.40.1...HEAD
+[Unreleased]: https://github.com/Stranger6667/jsonschema/compare/rust-v0.40.2...HEAD
+[0.40.2]: https://github.com/Stranger6667/jsonschema/compare/rust-v0.40.1...rust-v0.40.2
 [0.40.1]: https://github.com/Stranger6667/jsonschema/compare/rust-v0.40.0...rust-v0.40.1
 [0.40.0]: https://github.com/Stranger6667/jsonschema/compare/rust-v0.39.0...rust-v0.40.0
 [0.39.0]: https://github.com/Stranger6667/jsonschema/compare/rust-v0.38.1...rust-v0.39.0
