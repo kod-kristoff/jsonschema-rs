@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## [0.40.2] - 2026-01-30
+
 ### Changed
 
 - Switch HTTP client TLS crypto backend from `aws-lc-rs` to `ring` to fix import errors when building from source on some Linux distributions. [#957](https://github.com/Stranger6667/jsonschema/issues/957)
@@ -858,7 +860,8 @@
 ## 0.1.0 - 2020-06-09
 - Initial public release
 
-[Unreleased]: https://github.com/Stranger6667/jsonschema/compare/python-v0.40.1...HEAD
+[Unreleased]: https://github.com/Stranger6667/jsonschema/compare/python-v0.40.2...HEAD
+[0.40.2]: https://github.com/Stranger6667/jsonschema/compare/python-v0.40.1...python-v0.40.2
 [0.40.1]: https://github.com/Stranger6667/jsonschema/compare/python-v0.40.0...python-v0.40.1
 [0.40.0]: https://github.com/Stranger6667/jsonschema/compare/python-v0.39.0...python-v0.40.0
 [0.39.0]: https://github.com/Stranger6667/jsonschema/compare/python-v0.38.1...python-v0.39.0
