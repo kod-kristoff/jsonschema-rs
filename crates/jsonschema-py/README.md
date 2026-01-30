@@ -668,6 +668,20 @@ For detailed benchmarks, see our [full performance comparison](https://github.co
 
 `jsonschema-rs` supports CPython 3.10 through 3.14 and PyPy 3.10+.
 
+Pre-built wheels are available for:
+
+- **Linux**: `x86_64`, `i686`, `aarch64` (glibc and musl)
+- **macOS**: `x86_64`, `aarch64`, `universal2`
+- **Windows**: `x64`, `x86`
+
+## Troubleshooting
+
+If you encounter linking errors when building from source on Linux (e.g., undefined symbol errors related to `ring` or crypto), try using the `mold` linker:
+
+```bash
+RUSTFLAGS="-C link-arg=-fuse-ld=mold" pip install jsonschema-rs --no-binary :all:
+```
+
 ## Acknowledgements
 
 This library draws API design inspiration from the Python [`jsonschema`](https://github.com/python-jsonschema/jsonschema) package. We're grateful to the Python `jsonschema` maintainers and contributors for their pioneering work in JSON Schema validation.
