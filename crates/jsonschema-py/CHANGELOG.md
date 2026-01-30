@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## [0.40.3] - 2026-01-31
+
 ### Added
 
 - Pre-built wheels for `musllinux` (Alpine Linux) on `x86_64` and `aarch64`.
@@ -864,7 +866,8 @@
 ## 0.1.0 - 2020-06-09
 - Initial public release
 
-[Unreleased]: https://github.com/Stranger6667/jsonschema/compare/python-v0.40.2...HEAD
+[Unreleased]: https://github.com/Stranger6667/jsonschema/compare/python-v0.40.3...HEAD
+[0.40.3]: https://github.com/Stranger6667/jsonschema/compare/python-v0.40.2...python-v0.40.3
 [0.40.2]: https://github.com/Stranger6667/jsonschema/compare/python-v0.40.1...python-v0.40.2
 [0.40.1]: https://github.com/Stranger6667/jsonschema/compare/python-v0.40.0...python-v0.40.1
 [0.40.0]: https://github.com/Stranger6667/jsonschema/compare/python-v0.39.0...python-v0.40.0
