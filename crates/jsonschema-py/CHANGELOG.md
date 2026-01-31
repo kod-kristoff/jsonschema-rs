@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## [0.40.4] - 2026-01-31
+
 ### Added
 
 - Pre-built wheels for free-threaded Python (3.13t, 3.14t) on Linux, macOS, and Windows.
@@ -870,7 +872,8 @@
 ## 0.1.0 - 2020-06-09
 - Initial public release
 
-[Unreleased]: https://github.com/Stranger6667/jsonschema/compare/python-v0.40.3...HEAD
+[Unreleased]: https://github.com/Stranger6667/jsonschema/compare/python-v0.40.4...HEAD
+[0.40.4]: https://github.com/Stranger6667/jsonschema/compare/python-v0.40.3...python-v0.40.4
 [0.40.3]: https://github.com/Stranger6667/jsonschema/compare/python-v0.40.2...python-v0.40.3
 [0.40.2]: https://github.com/Stranger6667/jsonschema/compare/python-v0.40.1...python-v0.40.2
 [0.40.1]: https://github.com/Stranger6667/jsonschema/compare/python-v0.40.0...python-v0.40.1
