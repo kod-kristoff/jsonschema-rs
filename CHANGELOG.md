@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## [0.41.0] - 2026-02-04
+
 ### Performance
 
 - Replace regex-based `uri-template` format validation with a hand-rolled RFC 6570 parser.
@@ -1146,7 +1148,8 @@ Old names are retained for backward compatibility but will be removed in a futur
 
 - Initial public release
 
-[Unreleased]: https://github.com/Stranger6667/jsonschema/compare/rust-v0.40.2...HEAD
+[Unreleased]: https://github.com/Stranger6667/jsonschema/compare/rust-v0.41.0...HEAD
+[0.41.0]: https://github.com/Stranger6667/jsonschema/compare/rust-v0.40.2...rust-v0.41.0
 [0.40.2]: https://github.com/Stranger6667/jsonschema/compare/rust-v0.40.1...rust-v0.40.2
 [0.40.1]: https://github.com/Stranger6667/jsonschema/compare/rust-v0.40.0...rust-v0.40.1
 [0.40.0]: https://github.com/Stranger6667/jsonschema/compare/rust-v0.39.0...rust-v0.40.0
