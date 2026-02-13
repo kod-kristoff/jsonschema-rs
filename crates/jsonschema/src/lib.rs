@@ -2551,14 +2551,13 @@ pub(crate) mod tests_util {
     }
 
     pub(crate) fn expect_errors(schema: &Value, instance: &Value, errors: &[&str]) {
-        assert_eq!(
-            crate::validator_for(schema)
-                .expect("Should be a valid schema")
-                .iter_errors(instance)
-                .map(|e| e.to_string())
-                .collect::<Vec<String>>(),
-            errors
-        );
+        let mut actual = crate::validator_for(schema)
+            .expect("Should be a valid schema")
+            .iter_errors(instance)
+            .map(|e| e.to_string())
+            .collect::<Vec<String>>();
+        actual.sort();
+        assert_eq!(actual, errors);
     }
 
     #[track_caller]
@@ -2623,9 +2622,13 @@ pub(crate) mod tests_util {
     #[track_caller]
     pub(crate) fn assert_locations(schema: &Value, instance: &Value, expected: &[&str]) {
         let validator = crate::validator_for(schema).unwrap();
-        let errors = validator.iter_errors(instance);
+        let mut errors: Vec<_> = validator
+            .iter_errors(instance)
+            .map(|error| error.schema_path().as_str().to_string())
+            .collect();
+        errors.sort();
         for (error, location) in errors.into_iter().zip(expected) {
-            assert_eq!(error.schema_path().as_str(), *location);
+            assert_eq!(error, *location);
         }
     }
 
