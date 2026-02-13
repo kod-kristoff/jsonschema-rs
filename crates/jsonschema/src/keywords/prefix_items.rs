@@ -159,90 +159,95 @@ mod tests {
         let validator = crate::validator_for(&schema).expect("schema compiles");
         let evaluation = validator.evaluate(&json!({"name": "Alice", "age": 1}));
 
+        let mut actual = serde_json::to_value(evaluation.list()).unwrap();
+        actual.sort_all_objects();
         assert_eq!(
-            serde_json::to_value(evaluation.list()).unwrap(),
+            actual,
             json!({
                 "valid": true,
                 "details": [
-                    {"evaluationPath": "", "instanceLocation": "", "schemaLocation": "", "valid": true},
+                    {"valid":true, "evaluationPath": "", "schemaLocation": "", "instanceLocation": ""},
                     {
                         "valid": true,
                         "evaluationPath": "/type",
+                        "schemaLocation": "/type",
                         "instanceLocation": "",
-                        "schemaLocation": "/type"
                     },
                     {
                         "valid": true,
                         "evaluationPath": "/required",
+                        "schemaLocation": "/required",
                         "instanceLocation": "",
-                        "schemaLocation": "/required"
                     },
                     {
                         "valid": true,
                         "evaluationPath": "/properties",
-                        "instanceLocation": "",
                         "schemaLocation": "/properties",
+                        "instanceLocation": "",
                         "annotations": ["age", "name"]
                     },
+
                     {
                         "valid": true,
                         "evaluationPath": "/properties/age",
+                        "schemaLocation": "/properties/age",
                         "instanceLocation": "/age",
-                        "schemaLocation": "/properties/age"
                     },
                     {
                         "valid": true,
                         "evaluationPath": "/properties/age/type",
+                        "schemaLocation": "/properties/age/type",
                         "instanceLocation": "/age",
-                        "schemaLocation": "/properties/age/type"
                     },
                     {
                         "valid": true,
                         "evaluationPath": "/properties/age/minimum",
+                        "schemaLocation": "/properties/age/minimum",
                         "instanceLocation": "/age",
-                        "schemaLocation": "/properties/age/minimum"
                     },
                     {
                         "valid": true,
                         "evaluationPath": "/properties/name",
+                        "schemaLocation": "/properties/name",
                         "instanceLocation": "/name",
-                        "schemaLocation": "/properties/name"
                     },
                     {
                         "valid": true,
                         "evaluationPath": "/properties/name/type",
+                        "schemaLocation": "/properties/name/type",
                         "instanceLocation": "/name",
-                        "schemaLocation": "/properties/name/type"
-                    }
+                    },
                 ]
             })
         );
 
+        let mut actual = serde_json::to_value(evaluation.hierarchical()).unwrap();
+        actual.sort_all_objects();
         assert_eq!(
-            serde_json::to_value(evaluation.hierarchical()).unwrap(),
+            actual,
             json!({
                 "valid": true,
                 "evaluationPath": "",
-                "instanceLocation": "",
                 "schemaLocation": "",
+                "instanceLocation": "",
                 "details": [
                     {
                         "valid": true,
                         "evaluationPath": "/type",
+                        "schemaLocation": "/type",
                         "instanceLocation": "",
-                        "schemaLocation": "/type"
                     },
                     {
                         "valid": true,
                         "evaluationPath": "/required",
+                        "schemaLocation": "/required",
                         "instanceLocation": "",
-                        "schemaLocation": "/required"
                     },
                     {
                         "valid": true,
                         "evaluationPath": "/properties",
-                        "instanceLocation": "",
                         "schemaLocation": "/properties",
+                        "instanceLocation": "",
                         "annotations": ["age", "name"],
                         "details": [
                             {
