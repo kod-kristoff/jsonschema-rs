@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## [0.42.0] - 2026-02-14
+
 ### Fixed
 
 - Panic when validating `$ref` targets that resolve to boolean schemas.
@@ -899,7 +901,8 @@
 ## 0.1.0 - 2020-06-09
 - Initial public release
 
-[Unreleased]: https://github.com/Stranger6667/jsonschema/compare/python-v0.41.0...HEAD
+[Unreleased]: https://github.com/Stranger6667/jsonschema/compare/python-v0.42.0...HEAD
+[0.42.0]: https://github.com/Stranger6667/jsonschema/compare/python-v0.41.0...python-v0.42.0
 [0.41.0]: https://github.com/Stranger6667/jsonschema/compare/python-v0.40.4...python-v0.41.0
 [0.40.4]: https://github.com/Stranger6667/jsonschema/compare/python-v0.40.3...python-v0.40.4
 [0.40.3]: https://github.com/Stranger6667/jsonschema/compare/python-v0.40.2...python-v0.40.3
