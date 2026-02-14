@@ -191,6 +191,67 @@ fn read_json(
     Ok(serde_json::from_reader(reader))
 }
 
+#[derive(Debug)]
+enum ReadJsonOrYamlError {
+    Json {
+        file: PathBuf,
+        err: serde_json::Error,
+    },
+    Yaml {
+        file: PathBuf,
+        err: serde_saphyr::Error,
+    },
+}
+
+impl std::fmt::Display for ReadJsonOrYamlError {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        match self {
+            Self::Json { file, err } => f.write_fmt(format_args!(
+                "failed to read JSON from {}: {}",
+                file.display(),
+                err
+            )),
+            Self::Yaml { file, err } => f.write_fmt(format_args!(
+                "failed to read YAML from {}: {}",
+                file.display(),
+                err
+            )),
+        }
+    }
+}
+
+impl std::error::Error for ReadJsonOrYamlError {
+    fn source(&self) -> Option<&(dyn std::error::Error + 'static)> {
+        match self {
+            Self::Json { file: _, err } => Some(err),
+            Self::Yaml { file: _, err } => Some(err),
+        }
+    }
+}
+
+fn read_json_or_yaml(
+    path: &Path,
+) -> Result<Result<serde_json::Value, ReadJsonOrYamlError>, Box<dyn std::error::Error>> {
+    let file = File::open(path)?;
+    let reader = BufReader::new(file);
+    if let Some(ext) = path.extension() {
+        if ext == "yaml" || ext == "yml" {
+            return Ok(serde_saphyr::from_reader(reader).map_err(|err| {
+                ReadJsonOrYamlError::Yaml {
+                    file: path.into(),
+                    err,
+                }
+            }));
+        }
+    }
+    Ok(
+        serde_json::from_reader(reader).map_err(|err| ReadJsonOrYamlError::Json {
+            file: path.into(),
+            err,
+        }),
+    )
+}
+
 fn path_to_uri(path: &std::path::Path) -> String {
     const SEGMENT: &AsciiSet = &CONTROLS
         .add(b' ')
@@ -370,7 +431,7 @@ fn validate_instances(
         Ok(validator) => {
             if matches!(output, Output::Text) {
                 for instance in instances {
-                    let instance_json = read_json(instance)??;
+                    let instance_json = read_json_or_yaml(instance)??;
                     let mut errors = validator.iter_errors(&instance_json);
                     let filename = instance.to_string_lossy();
                     if let Some(first) = errors.next() {
