@@ -7,6 +7,7 @@
 - `JsonType::as_str` method for zero-allocation type name access.
 - `ValidationErrorKind::keyword` is now public.
 - `tls-ring` feature flag to opt into using `ring` as the TLS crypto provider instead of the default `aws-lc-rs`. [#997](https://github.com/Stranger6667/jsonschema/pull/997)
+- **CLI**: Support YAML (`.yaml`/`.yml`) instance files in text output mode. [#988](https://github.com/Stranger6667/jsonschema/pull/988)
 
 ### Changed
 

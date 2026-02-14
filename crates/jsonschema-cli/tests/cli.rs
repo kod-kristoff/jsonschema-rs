@@ -600,6 +600,113 @@ fn test_output_text_multiple_errors() {
 }
 
 #[test]
+fn test_output_text_valid_yaml() {
+    let dir = tempdir().unwrap();
+    let schema = create_temp_file(
+        &dir,
+        "schema.json",
+        r#"{
+            "type": "object",
+            "properties": {
+                "name": {"type": "string"},
+                "age": {"type": "integer"}
+            },
+            "required": ["name", "age"]
+        }"#,
+    );
+    let valid = create_temp_file(&dir, "valid.yaml", "name: Alice\nage: 30\n");
+
+    let mut cmd = cli();
+    cmd.arg(&schema)
+        .arg("--instance")
+        .arg(&valid)
+        .arg("--output")
+        .arg("text");
+    let output = cmd.output().unwrap();
+    assert!(output.status.success());
+    let sanitized = sanitize_output(
+        String::from_utf8_lossy(&output.stdout).to_string(),
+        &[&valid],
+    );
+    assert_snapshot!(sanitized);
+}
+
+#[test]
+fn test_output_text_invalid_yaml() {
+    let dir = tempdir().unwrap();
+    let schema = create_temp_file(
+        &dir,
+        "schema.json",
+        r#"{
+            "type": "object",
+            "properties": {
+                "age": {"type": "integer"}
+            },
+            "required": ["age"]
+        }"#,
+    );
+    let invalid = create_temp_file(&dir, "invalid.yaml", "age: not a number\n");
+
+    let mut cmd = cli();
+    cmd.arg(&schema)
+        .arg("--instance")
+        .arg(&invalid)
+        .arg("--output")
+        .arg("text");
+    let output = cmd.output().unwrap();
+    assert!(!output.status.success());
+    let sanitized = sanitize_output(
+        String::from_utf8_lossy(&output.stdout).to_string(),
+        &[&invalid],
+    );
+    assert_snapshot!(sanitized);
+}
+
+#[test]
+fn test_output_text_valid_yml() {
+    let dir = tempdir().unwrap();
+    let schema = create_temp_file(&dir, "schema.json", r#"{"type": "integer"}"#);
+    let valid = create_temp_file(&dir, "valid.yml", "42\n");
+
+    let mut cmd = cli();
+    cmd.arg(&schema)
+        .arg("--instance")
+        .arg(&valid)
+        .arg("--output")
+        .arg("text");
+    let output = cmd.output().unwrap();
+    assert!(output.status.success());
+
+    let sanitized = sanitize_output(
+        String::from_utf8_lossy(&output.stdout).to_string(),
+        &[&valid],
+    );
+    assert_eq!(sanitized, "{FILE_1} - VALID\n");
+}
+
+#[test]
+fn test_output_text_invalid_yaml_syntax() {
+    let dir = tempdir().unwrap();
+    let schema = create_temp_file(&dir, "schema.json", r#"{"type": "object"}"#);
+    let invalid = create_temp_file(&dir, "invalid.yaml", "name: [Alice\n");
+
+    let mut cmd = cli();
+    cmd.arg(&schema)
+        .arg("--instance")
+        .arg(&invalid)
+        .arg("--output")
+        .arg("text");
+    let output = cmd.output().unwrap();
+    assert!(!output.status.success());
+
+    let sanitized = sanitize_output(
+        String::from_utf8_lossy(&output.stdout).to_string(),
+        &[&invalid],
+    );
+    assert!(sanitized.contains("Error: failed to read YAML from {FILE_1}:"));
+}
+
+#[test]
 fn test_output_hierarchical_valid() {
     let dir = tempdir().unwrap();
     let schema = create_temp_file(
