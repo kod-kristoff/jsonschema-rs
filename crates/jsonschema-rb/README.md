@@ -86,7 +86,7 @@ If no pre-built gem is available for your platform, it will be compiled from sou
 ### Reusable validators
 
 For validating multiple instances against the same schema, create a reusable validator.
-`validator_for` automatically detects the draft version from the `$schema` keyword in the schema:
+`validator_for` automatically detects the draft version from the `$schema` keyword in the schema and falls back to Draft 2020-12:
 
 ```ruby
 validator = JSONSchema.validator_for({
@@ -510,8 +510,6 @@ Valid draft symbols: `:draft4`, `:draft6`, `:draft7`, `:draft201909`, `:draft202
 - **7-118x** faster than `rj_schema` (RapidJSON/C++)
 
 For detailed benchmarks, see our [full performance comparison](https://github.com/Stranger6667/jsonschema/blob/master/crates/jsonschema-rb/BENCHMARKS.md).
-
-**Tips:** Reuse validators. Use `valid?` for boolean checks (short-circuits on first error).
 
 ## Acknowledgements
 
